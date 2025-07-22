@@ -17,21 +17,33 @@ int main(void)
 	// char *mybuf = malloc(1000);
 	// int myread_size = read(fd, mybuf, 10);
 
+	// char *line = " ";
+
+	// while (line)
+	// {
+	// 	free(line);
+	// 	line = get_next_line(fd);
+	// 	printf("%s\n", line);
+	// }
 	char *line = get_next_line(fd);
-	printf("%s", line);
+	printf("%s\n---", line);
 	free(line);
 
 	line = get_next_line(fd);
-	printf("%s", line);
+	printf("%s\n---", line);
+	free(line);
 
 	line = get_next_line(fd);
-	printf("%s", line);
+	printf("%s\n---", line);
+	free(line);
 
 	line = get_next_line(fd);
-	printf("%s", line);
+	printf("%s\n---", line);
+	free(line);
 
 	line = get_next_line(fd);
-	printf("%s", line);
+	printf("%s\n---", line);
+	free(line);
 
 	// int i = 0;
 	// while (line[i])

@@ -3,7 +3,7 @@
 int	ft_strlen(char const *str)
 {
 	int	i;
-	if (!str)
+	if (!str || !*str)
 		return (0);
 
 	i = 0;
@@ -16,13 +16,18 @@ void	*ft_memcpy(void *dest, const void *src, size_t n)
 {
 	unsigned char		*ptr1;
 	const unsigned char	*ptr2;
+	int					i;
 
 	ptr1 = (unsigned char *)dest;
 	ptr2 = (unsigned char *)src;
+	i = 0;
 	if (!dest && !src)
 		return (dest);
 	while (n-- > 0)
-		*(ptr1++) = *(ptr2++);
+	{
+		*(ptr1 + i) = *(ptr2 + i);
+		i++;
+	}
 	return (dest);
 }
 
@@ -34,7 +39,7 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 		return (NULL);
 	if (start >= (unsigned int)ft_strlen((char *)s))
 	{
-		str = (char *)malloc(1);
+		str = (char *)calloc(1, 1);
 		if (str == NULL)
 			return (NULL);
 		str[0] = '\0';
@@ -44,15 +49,17 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	{
 		len = ft_strlen(s) - start;
 	}
-	str = (char *)malloc(len + 1);
+	str = (char *)calloc(1, len + 2);
 	if (str == NULL)
 		return (NULL);
 	ft_memcpy(str, &s[start], len);
+	//printf("substr 56\n");
+
 	str[len + 1] = '\0';
 	return (str);
 }
 
-char	*ft_strjoin(char const *s1, char const *s2)
+char	*ft_strjoin(char const *s1, char const *s2, size_t size )
 {
 	size_t	len;
 	char	*res;
@@ -70,7 +77,7 @@ char	*ft_strjoin(char const *s1, char const *s2)
 		i++;
 	}
 	len = 0;
-	while (s2 && s2[len])
+	while (s2 && s2[len] && len < size)
 	{
 		res[i] = s2[len];
 		len++;
@@ -84,12 +91,13 @@ char	*ft_strjoin(char const *s1, char const *s2)
 int strchr_i (char *str, int i, char c)
 {
 
-	char *ptr = &(str[i]);
 	int j = 0;
-	while (ptr[j])
+	while (str[i + j])
 	{
-		if (ptr[j] == c)
+		// printf("strchr_i 95\n");
+		if (str[i + j] == c)
 			return (i + j);
+		// printf("strchr_i 95\n");
 		j++;
 	}
 	return (-1);
