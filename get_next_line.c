@@ -2,7 +2,7 @@
 
 char *get_next_line(int fd)
 {
-	char *read_buf = calloc(BUFFER_SIZE + 1, 1);
+	char *read_buf;
 	int read_size;
 	char *res;
 	char *temp;
@@ -11,6 +11,7 @@ char *get_next_line(int fd)
 	res = left;
 	if (fd < 0 || BUFFER_SIZE < 0)
 		return (NULL);
+	read_buf = calloc(BUFFER_SIZE + 1, 1);
 	// printf("CCC\n");
 	read_size = 1;
 	// printf("DDD\n");
@@ -18,10 +19,11 @@ char *get_next_line(int fd)
 	{
 		read_size = read(fd, read_buf, BUFFER_SIZE);
 		//printf("buf was: %s, readsize is: %i\n", read_buf, read_size);
-		printf("BBB\n");
+		// printf("BBB\n");
 		temp = ft_strjoin(res, read_buf, read_size);
 		free(res);
 		res = temp;
+		// printf("XXX\n");
 		// printf("res is: %s\n", res);
 		//  printf("X: char value: '%i'\n", res[ft_strlen(res) - 1]);
 	}
@@ -34,7 +36,7 @@ char *get_next_line(int fd)
 		// printf("SKDFS\n");
 		// free(left);
 		left = ft_substr(res, strchr_i(res, 0, '\n') + 1, ft_strlen(res));
-		// printf("YYYY\n");
+		// printf("YYYY\nxx");
 		//  res = ft_substr(res, 0, strchr_i(res, 0, '\n') + 1); /// substr index 1. arg included 2 excluded
 		res[strchr_i(res, 0, '\n') + 1] = '\0'; /// substr index 1. arg included 2 excluded
 	}
@@ -46,12 +48,13 @@ char *get_next_line(int fd)
 	// 	// // free(res);
 	// 	// return (NULL);
 	// }
-	if (left[0] == '\0')
+	if (left && left[0] == '\0')
 	{
 		free(left);
 		left = NULL;
-	}//printf("test3\n");
-	if (res[0] == '\0')
+	}
+	// printf("test3\n");
+	if (res && res[0] == '\0')
 		return (NULL);
 	// free(temp);
 	// printf("!43!\n");

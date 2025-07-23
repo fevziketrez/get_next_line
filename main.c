@@ -5,6 +5,16 @@
 int main(void)
 {
 	int fd = open("test.txt", O_CREAT | O_RDWR, 0777);
+
+	char *line;
+	// while (line)
+	// {
+	// 	line = get_next_line(fd);
+	// 	printf("%s", line);
+	// 	free(line);
+	// }
+
+
 	// printf("fd is: %i\n", fd);
 
 	// char *test_buf;
@@ -25,25 +35,25 @@ int main(void)
 	// 	line = get_next_line(fd);
 	// 	printf("%s\n", line);
 	// }
-	char *line = get_next_line(fd);
-	printf("%s\n---", line);
+	// char *line = get_next_line(fd);
+	// printf("%s\n---", line);
+	// free(line);
+
+	line = get_next_line(fd);
+	printf("%s\n", line);
 	free(line);
 
 	line = get_next_line(fd);
-	printf("%s\n---", line);
+	printf("%s\n", line);
 	free(line);
 
 	line = get_next_line(fd);
-	printf("%s\n---", line);
+	printf("%s\n---\n", line);
 	free(line);
 
-	line = get_next_line(fd);
-	printf("%s\n---", line);
-	free(line);
-
-	line = get_next_line(fd);
-	printf("%s\n---", line);
-	free(line);
+	// line = get_next_line(fd);
+	// printf("%s\n---", line);
+	// free(line);
 
 	// int i = 0;
 	// while (line[i])
