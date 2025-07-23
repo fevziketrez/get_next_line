@@ -40,15 +40,19 @@ int main(void)
 	// free(line);
 
 	line = get_next_line(fd);
-	printf("%s\n", line);
+	printf("%s", line);
 	free(line);
 
 	line = get_next_line(fd);
-	printf("%s\n", line);
+	printf("%s", line);
 	free(line);
 
 	line = get_next_line(fd);
-	printf("%s\n---\n", line);
+	printf("%s", line);
+	free(line);
+
+	line = get_next_line(fd);
+	printf("%s", line);
 	free(line);
 
 	// line = get_next_line(fd);

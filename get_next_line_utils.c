@@ -1,6 +1,6 @@
 #include "get_next_line.h"
 
-int	ft_strlen(char const *str)
+int	ft_strlen(char *str)
 {
 	int	i;
 	if (!str || !*str)
@@ -12,7 +12,7 @@ int	ft_strlen(char const *str)
 	return (i);
 }
 
-void	*ft_memcpy(void *dest, const void *src, size_t n)
+void	*ft_memcpy(void *dest, void *src, size_t n)
 {
 	unsigned char		*ptr1;
 	const unsigned char	*ptr2;
@@ -31,7 +31,7 @@ void	*ft_memcpy(void *dest, const void *src, size_t n)
 	return (dest);
 }
 
-char	*ft_substr(char const *s, unsigned int start, size_t len)
+char	*ft_substr(char *s, unsigned int start, size_t len)
 {
 	char	*str;
 
@@ -53,13 +53,12 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	if (str == NULL)
 		return (NULL);
 	ft_memcpy(str, &s[start], len);
-	//printf("substr 56\n");
 
 	str[len + 1] = '\0';
 	return (str);
 }
 
-char	*ft_strjoin(char const *s1, char const *s2, size_t size )
+char	*ft_strjoin(char *s1, char *s2, size_t size )
 {
 	size_t	len;
 	char	*res;
@@ -94,10 +93,8 @@ int strchr_i (char *str, int i, char c)
 	int j = 0;
 	while (str[i + j])
 	{
-		// printf("strchr_i 95\n");
 		if (str[i + j] == c)
 			return (i + j);
-		// printf("strchr_i 95\n");
 		j++;
 	}
 	return (-1);
