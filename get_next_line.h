@@ -11,11 +11,11 @@
 # include <stdio.h>
 # include <string.h>
 
-int		ft_strlen(char *str);
-void	*ft_memcpy(void *dest, void *src, size_t n);
-char	*ft_substr(char *s, unsigned int start, size_t len);
-char	*ft_strjoin(char *s1, char *s2, size_t size);
-char	*get_next_line(int fd);
-int		strchr_i(char *str, int i, char c);
+ssize_t 	ft_strlen(char *str);
+void	    *ft_memcpy(void *dest, void *src, ssize_t n);
+char        *ft_substr(char *s, ssize_t start, ssize_t len);
+char        ft_strjoin(char *s1, char *s2, ssize_t size);
+char        *get_next_line(int fd);
+ssize_t     strchr_i(char *str, ssize_t i, char c);
 
 #endif
