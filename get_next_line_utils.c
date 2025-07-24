@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   get_next_line_utils.c                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: fketrez <fketrez@student.42istanbul.com    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/07/24 03:31:34 by fketrez           #+#    #+#             */
+/*   Updated: 2025/07/24 03:40:48 by fketrez          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "get_next_line.h"
 
 ssize_t	ft_strlen(char *str)
@@ -16,7 +28,7 @@ void	*ft_memcpy(void *dest, void *src, ssize_t n)
 {
 	unsigned char	*ptr1;
 	unsigned char	*ptr2;
-	ssize_t					i;
+	ssize_t			i;
 
 	ptr1 = (unsigned char *)dest;
 	ptr2 = (unsigned char *)src;
@@ -39,7 +51,7 @@ char	*ft_substr(char *s, ssize_t start, ssize_t len)
 		return (NULL);
 	if (start >= ft_strlen((char *)s))
 	{
-		str = (char *)calloc(1, 1);
+		str = (char *)calloc(1, 1); //calloc
 		if (str == NULL)
 			return (NULL);
 		str[0] = '\0';
@@ -49,11 +61,10 @@ char	*ft_substr(char *s, ssize_t start, ssize_t len)
 	{
 		len = ft_strlen(s) - start;
 	}
-	str = (char *)calloc(1, len + 2);
+	str = (char *)calloc(1, len + 2); //calloc
 	if (str == NULL)
 		return (NULL);
 	ft_memcpy(str, &s[start], len);
-
 	str[len + 1] = '\0';
 	return (str);
 }
@@ -66,10 +77,9 @@ char	*ft_strjoin(char *s1, char *s2, ssize_t size )
 
 	len = ft_strlen((char *)s1) + ft_strlen((char *)s2) + 1;
 	i = 0;
-	res = calloc(len + 1, 1);
+	res = calloc(len + 1, 1); //calloc
 	if (!res)
 		return (NULL);
-
 	while (s1 && s1[i])
 	{
 		res[i] = s1[i];
@@ -86,10 +96,11 @@ char	*ft_strjoin(char *s1, char *s2, ssize_t size )
 	return (res);
 }
 
-ssize_t	strchr_i (char *str, ssize_t i, char c)
+ssize_t	strchr_i(char *str, ssize_t i, char c)
 {
+	ssize_t	j;
 
-	ssize_t j = 0;
+	j = 0;
 	while (str[i + j])
 	{
 		if (str[i + j] == c)

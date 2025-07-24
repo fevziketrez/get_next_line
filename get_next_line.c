@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: fketrez <fketrez@student.42istanbul.com    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/07/24 03:28:41 by fketrez           #+#    #+#             */
+/*   Updated: 2025/07/24 03:41:07 by fketrez          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "get_next_line.h"
 
 void	gnl_helper(char **res, char **left)
@@ -5,7 +17,8 @@ void	gnl_helper(char **res, char **left)
 	if (strchr_i((*res), 0, '\n') != -1)
 	{
 		free((*left));
-		(*left) = ft_substr((*res), strchr_i((*res), 0, '\n') + 1, ft_strlen((*res)));
+		(*left) = ft_substr((*res), strchr_i((*res), 0, '\n') + 1,
+				ft_strlen((*res)));
 		(*res)[strchr_i((*res), 0, '\n') + 1] = '\0';
 	}
 	else
@@ -22,16 +35,16 @@ void	gnl_helper(char **res, char **left)
 
 char	*get_next_line(int fd)
 {
-	char	*read_buf;
-	ssize_t	read_size;
-	char	*res;
-	char	*temp;
+	char		*read_buf;
+	ssize_t		read_size;
+	char		*res;
+	char		*temp;
 	static char	*left;
 
 	if (fd < 0 || BUFFER_SIZE < 0)
 		return (NULL);
 	res = left;
-	read_buf = calloc(BUFFER_SIZE + 1, 1);
+	read_buf = calloc(BUFFER_SIZE + 1, 1); //calloc
 	read_size = 1;
 	while (strchr_i(read_buf, 0, '\n') == -1 && read_size > 0)
 	{
