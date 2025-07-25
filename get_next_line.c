@@ -6,7 +6,7 @@
 /*   By: fketrez <fketrez@student.42istanbul.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/24 03:28:41 by fketrez           #+#    #+#             */
-/*   Updated: 2025/07/24 03:41:07 by fketrez          ###   ########.fr       */
+/*   Updated: 2025/07/26 01:28:26 by fketrez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ char	*get_next_line(int fd)
 	char		*temp;
 	static char	*left;
 
-	if (fd < 0 || BUFFER_SIZE < 0)
+	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
 	res = left;
 	read_buf = calloc(BUFFER_SIZE + 1, 1); //calloc
